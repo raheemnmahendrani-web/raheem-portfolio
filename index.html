@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raheem | Web Developer • Hyderabad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+  <script src="header.html"></script>
+
+  <!-- HERO -->
+  <section class="hero-bg py-28 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+        I build clean, modern websites<br>that help your business grow
+      </h1>
+      <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+        Static • Dynamic • Launch • Updates • Monthly Maintenance
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="pricing.html" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-3xl text-lg font-semibold inline-flex items-center gap-2">
+          View Pricing <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="contact.html" class="border border-slate-400 hover:border-white px-10 py-4 rounded-3xl text-lg font-semibold">
+          Talk to Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Teaser -->
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-semibold mb-4">My Services</h2>
+      <p class="text-slate-400 mb-12">From building to maintaining – everything you need</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-800 p-8 rounded-3xl card-hover">Website Building</div>
+        <div class="bg-slate-800 p-8 rounded-3xl card-hover">Website Launching</div>
+        <div class="bg-slate-800 p-8 rounded-3xl card-hover">Updates & Maintenance</div>
+      </div>
+      <a href="services.html" class="mt-12 inline-block text-blue-400 hover:underline text-lg">See Full Services →</a>
+    </div>
+  </section>
+
+  <script src="footer.html"></script>
+
+  <script>
+    // Load header and footer
+    fetch('header.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="header.html"]').outerHTML = html;
+      initMobileMenu();
+      highlightActiveLink();
+    });
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="footer.html"]').outerHTML = html;
+    });
+
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    }
+
+    function highlightActiveLink() {
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('text-blue-400', 'font-semibold');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
