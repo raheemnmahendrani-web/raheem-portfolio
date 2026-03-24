@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Raheem | Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .project-card { transition: all 0.3s ease; }
+    .project-card:hover { transform: translateY(-10px); }
+    .screenshot { transition: all 0.3s ease; }
+    .screenshot:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+  <script src="header.html"></script>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold mb-4">My Portfolio</h1>
+        <p class="text-slate-400 text-xl">Real websites I have built</p>
+      </div>
+
+            <!-- Project 1 with 4 screenshots + Live Link -->
+      <div class="max-w-5xl mx-auto bg-slate-800 rounded-3xl overflow-hidden project-card">
+        <div class="p-8 border-b border-slate-700">
+          <h2 class="text-3xl font-semibold mb-2">Client Website - Small Business</h2>
+          <p class="text-slate-400">Fully responsive static website • Built with HTML, CSS & Tailwind • Delivered in 12 days</p>
+        </div>
+
+        <!-- 4 Screenshots Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-8">
+          <div>
+            <img src="assets/images/project1-1.jpg" alt="Home Page" 
+                 class="screenshot w-full rounded-2xl shadow-lg" 
+                 onerror="this.src='https://via.placeholder.com/600x400/1e2937/64748b?text=Home'">
+            <p class="text-center text-xs text-slate-400 mt-2">Home Page</p>
+          </div>
+          <div>
+            <img src="assets/images/project1-2.jpg" alt="About" 
+                 class="screenshot w-full rounded-2xl shadow-lg" 
+                 onerror="this.src='https://via.placeholder.com/600x400/1e2937/64748b?text=About'">
+            <p class="text-center text-xs text-slate-400 mt-2">About Section</p>
+          </div>
+          <div>
+            <img src="assets/images/project1-3.jpg" alt="Services" 
+                 class="screenshot w-full rounded-2xl shadow-lg" 
+                 onerror="this.src='https://via.placeholder.com/600x400/1e2937/64748b?text=Services'">
+            <p class="text-center text-xs text-slate-400 mt-2">Services</p>
+          </div>
+          <div>
+            <img src="assets/images/project1-4.jpg" alt="Contact" 
+                 class="screenshot w-full rounded-2xl shadow-lg" 
+                 onerror="this.src='https://via.placeholder.com/600x400/1e2937/64748b?text=Contact'">
+            <p class="text-center text-xs text-slate-400 mt-2">Contact Form</p>
+          </div>
+        </div>
+
+        <!-- Live Link Button -->
+        <div class="p-8 bg-slate-900 flex justify-center">
+          <a href="https://euphonious-lolly-4bd887.netlify.app/" 
+             target="_blank"
+             class="flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-10 py-4 rounded-3xl font-semibold text-lg transition">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            View Live Website
+          </a>
+        </div>
+      </div>
+
+        <div class="p-8 bg-slate-900 flex justify-center gap-6">
+          <a href="#" target="_blank" 
+             class="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-3xl font-semibold">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Website
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="footer.html"></script>
+
+  <script>
+    fetch('header.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="header.html"]').outerHTML = html;
+      initMobileMenu();
+      highlightActiveLink();
+    });
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="footer.html"]').outerHTML = html;
+    });
+
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    }
+    function highlightActiveLink() {
+      const current = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === current) link.classList.add('text-blue-400', 'font-semibold');
+      });
+    }
+  </script>
+</body>
+</html>

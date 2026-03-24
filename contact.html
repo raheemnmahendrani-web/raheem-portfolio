@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Raheem | Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+  <script src="header.html"></script>
+
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="text-5xl font-bold text-center mb-6">Let's Work Together</h1>
+      <p class="text-slate-400 text-center mb-12">Tell me about your project. I reply within 24 hours.</p>
+
+      <div class="bg-slate-800 rounded-3xl p-10">
+        <form id="contact-form" action="https://formspree.io/f/xkoqdked" method="POST" class="space-y-8">
+          <div>
+            <label class="block text-sm mb-2">Your Name</label>
+            <input type="text" name="name" id="name" required 
+                   class="w-full bg-slate-900 border border-slate-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-400">
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm mb-2">Business Name (optional)</label>
+              <input type="text" name="business" id="business" 
+                     class="w-full bg-slate-900 border border-slate-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-400">
+            </div>
+            <div>
+              <label class="block text-sm mb-2">Email or WhatsApp Number</label>
+              <input type="text" name="contact" id="contact-info" required 
+                     class="w-full bg-slate-900 border border-slate-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-400">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm mb-2">Message / Selected Package</label>
+            <textarea name="message" id="message" rows="6" required 
+                      class="w-full bg-slate-900 border border-slate-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-blue-400"></textarea>
+          </div>
+          
+          <!-- Hidden field for better spam protection -->
+          <input type="hidden" name="_subject" value="New Website Inquiry from Portfolio!">
+          <input type="hidden" name="_next" value="https://raheemnmahendrani-web.github.io/raheem-portfolio/thankyou.html"> <!-- we'll create this later -->
+
+          <button type="submit" 
+                  class="w-full bg-blue-600 hover:bg-blue-700 py-5 rounded-3xl text-xl font-semibold transition">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-8 justify-center text-center">
+        <a href="https://wa.me/919876543210" target="_blank" 
+           class="flex items-center justify-center gap-4 text-2xl hover:text-emerald-400">
+          <i class="fa-solid fa-whatsapp"></i> WhatsApp me directly
+        </a>
+        <a href="mailto:raheemnmahendrani@gmail.com" 
+           class="flex items-center justify-center gap-4 text-2xl hover:text-blue-400">
+          <i class="fa-solid fa-envelope"></i> raheemnmahendrani@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script src="footer.html"></script>
+
+  <script>
+    // Load header + footer + active link
+    fetch('header.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="header.html"]').outerHTML = html;
+      initMobileMenu();
+      highlightActiveLink();
+    });
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="footer.html"]').outerHTML = html;
+    });
+
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    }
+
+    function highlightActiveLink() {
+      const current = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === current) {
+          link.classList.add('text-blue-400', 'font-semibold');
+        }
+      });
+    }
+
+    // Auto-fill package from pricing page
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedPackage = urlParams.get('package');
+    if (selectedPackage) {
+      document.getElementById('message').value = `Hi Raheem,\n\nI am interested in the ${selectedPackage}.\nPlease share the next steps and timeline.`;
+    }
+
+    // Optional: Show success message after Formspree redirect (we'll improve this later)
+  </script>
+</body>
+</html>

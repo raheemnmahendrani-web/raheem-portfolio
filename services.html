@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Raheem | Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+  <script src="header.html"></script>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h1 class="text-5xl font-bold text-center mb-6">My Services</h1>
+      <p class="text-slate-400 text-center text-xl max-w-2xl mx-auto mb-16">
+        I help small businesses and individuals get a professional online presence
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="bg-slate-900 p-10 rounded-3xl">
+          <i class="fa-solid fa-code text-5xl text-blue-400 mb-6"></i>
+          <h2 class="text-3xl font-semibold mb-4">Website Building</h2>
+          <ul class="space-y-4 text-slate-300">
+            <li>✓ Static websites (HTML, CSS, JS)</li>
+            <li>✓ Dynamic websites with Node.js</li>
+            <li>✓ Portfolio & Personal websites</li>
+            <li>✓ Small business websites</li>
+            <li>✓ Modern landing pages</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900 p-10 rounded-3xl">
+          <i class="fa-solid fa-rocket text-5xl text-emerald-400 mb-6"></i>
+          <h2 class="text-3xl font-semibold mb-4">Website Launching</h2>
+          <ul class="space-y-4 text-slate-300">
+            <li>✓ Domain name registration</li>
+            <li>✓ Hosting setup (shared / VPS)</li>
+            <li>✓ Deployment (GitHub, cPanel, Vercel)</li>
+            <li>✓ Basic SEO during launch</li>
+            <li>✓ Google Analytics setup</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900 p-10 rounded-3xl">
+          <i class="fa-solid fa-wrench text-5xl text-amber-400 mb-6"></i>
+          <h2 class="text-3xl font-semibold mb-4">Website Updating</h2>
+          <ul class="space-y-4 text-slate-300">
+            <li>✓ Content changes & edits</li>
+            <li>✓ Design improvements</li>
+            <li>✓ New feature additions</li>
+            <li>✓ Performance optimization</li>
+            <li>✓ Mobile responsiveness fixes</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900 p-10 rounded-3xl">
+          <i class="fa-solid fa-shield-halved text-5xl text-purple-400 mb-6"></i>
+          <h2 class="text-3xl font-semibold mb-4">Monthly Maintenance</h2>
+          <p class="text-slate-300 mb-6">Recurring income for you and peace of mind for clients</p>
+          <ul class="space-y-4 text-slate-300">
+            <li>✓ Security updates</li>
+            <li>✓ Regular backups</li>
+            <li>✓ Bug fixes</li>
+            <li>✓ Speed monitoring</li>
+            <li>✓ Uptime checks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="footer.html"></script>
+
+  <script>
+    fetch('header.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="header.html"]').outerHTML = html;
+      initMobileMenu();
+      highlightActiveLink();
+    });
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="footer.html"]').outerHTML = html;
+    });
+
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    }
+    function highlightActiveLink() {
+      const current = window.location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === current) link.classList.add('text-blue-400', 'font-semibold');
+      });
+    }
+  </script>
+</body>
+</html>

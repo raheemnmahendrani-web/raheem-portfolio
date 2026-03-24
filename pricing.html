@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - Raheem | Web Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+  <script src="header.html"></script>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h1 class="text-5xl font-bold text-center mb-4">Transparent Pricing</h1>
+      <p class="text-slate-400 text-center text-xl mb-16">Choose what fits your need • 50% advance • Clear deliverables</p>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Basic -->
+        <div class="bg-slate-800 rounded-3xl p-8 hover:scale-105 transition-all">
+          <h3 class="text-3xl font-bold">Basic</h3>
+          <div class="text-6xl font-semibold my-6">₹4,999</div>
+          <p class="text-slate-400 mb-8">Static website for small needs</p>
+          <ul class="space-y-4 mb-12">
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 3-5 pages</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Fully responsive</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Basic SEO</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Launch support</li>
+          </ul>
+          <button onclick="selectPackage('Basic Package - ₹4,999')" 
+                  class="w-full bg-white text-slate-900 py-4 rounded-3xl font-semibold hover:bg-slate-200">
+            Choose Basic
+          </button>
+        </div>
+
+        <!-- Standard (Popular) -->
+        <div class="bg-blue-600 rounded-3xl p-8 scale-105 shadow-2xl relative">
+          <div class="absolute -top-4 right-8 bg-yellow-400 text-slate-900 px-6 py-1 rounded-3xl text-sm font-bold">MOST POPULAR</div>
+          <h3 class="text-3xl font-bold text-white">Standard</h3>
+          <div class="text-6xl font-semibold my-6 text-white">₹12,999</div>
+          <p class="text-blue-100 mb-8">Dynamic + Professional</p>
+          <ul class="space-y-4 mb-12 text-white">
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check"></i> Everything in Basic</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check"></i> Node.js backend / forms</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check"></i> Custom animations</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check"></i> 1 month free maintenance</li>
+          </ul>
+          <button onclick="selectPackage('Standard Package - ₹12,999')" 
+                  class="w-full bg-white text-blue-600 py-4 rounded-3xl font-semibold hover:bg-slate-200">
+            Choose Standard
+          </button>
+        </div>
+
+        <!-- Premium -->
+        <div class="bg-slate-800 rounded-3xl p-8 hover:scale-105 transition-all">
+          <h3 class="text-3xl font-bold">Premium</h3>
+          <div class="text-6xl font-semibold my-6">₹24,999</div>
+          <p class="text-slate-400 mb-8">Full custom solution</p>
+          <ul class="space-y-4 mb-12">
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Everything in Standard</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Advanced SEO</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 3 months maintenance</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Priority support</li>
+          </ul>
+          <button onclick="selectPackage('Premium Package - ₹24,999')" 
+                  class="w-full bg-white text-slate-900 py-4 rounded-3xl font-semibold hover:bg-slate-200">
+            Choose Premium
+          </button>
+        </div>
+      </div>
+
+      <!-- Monthly Maintenance -->
+      <div class="mt-20 text-center">
+        <h2 class="text-3xl font-semibold mb-6">Monthly Maintenance Plan</h2>
+        <div class="inline-block bg-slate-800 rounded-3xl p-10">
+          <p class="text-5xl font-bold text-emerald-400">₹799 / month</p>
+          <p class="text-slate-400 mt-2">Security • Backups • Updates • Monitoring</p>
+          <button onclick="selectPackage('Monthly Maintenance - ₹799/month')" 
+                  class="mt-8 bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-4 rounded-3xl font-semibold">
+            Start Monthly Plan
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="footer.html"></script>
+
+  <script>
+    fetch('header.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="header.html"]').outerHTML = html;
+      initMobileMenu();
+      highlightActiveLink();
+    });
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.querySelector('script[src="footer.html"]').outerHTML = html;
+    });
+
+    function initMobileMenu() { /* same as above */ }
+    function highlightActiveLink() { /* same as above */ }
+
+    function selectPackage(pkg) {
+      window.location.href = `contact.html?package=${encodeURIComponent(pkg)}`;
+    }
+  </script>
+</body>
+</html>
